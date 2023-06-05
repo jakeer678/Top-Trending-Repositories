@@ -1,0 +1,37 @@
+.navbar {
+    background-color: #0e72d6;
+    color: #ffffff;
+    height: 4rem;
+  }
+  .navbar li {
+    padding-left: 3rem;
+    font-size: 1rem;
+    font-weight: 500;
+  
+  }
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-item {
+    margin-right: 12px;
+  }
+  
+  .nav-item a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px;
+  }
+  
+  .nav-item a:hover {
+    color: #0366d6;
+  }
+  
+  .active {
+    color: #0366d6;
+  }
+  
+  

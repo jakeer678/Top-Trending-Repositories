@@ -1,0 +1,18 @@
+.table-dark.table-bordered {
+    margin-top: 4rem;
+}
+.repolist  {
+    text-align: center;
+}
+.repolist h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    color: aliceblue;
+}
+.table-dark.table-bordered  {
+    width: 24rem;
+    height: 7rem;
+    text-align: center;
+    margin-left: 25rem;
+}
