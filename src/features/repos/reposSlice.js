@@ -20,7 +20,8 @@ export const reposSlice = createSlice({
   },
 });
 
-export const { setRepos, selectedRepoList } = reposSlice.actions;
+
+
 
 export const fetchTrendingRepos = () => async (dispatch) => {
   try {
@@ -34,4 +35,6 @@ export const fetchTrendingRepos = () => async (dispatch) => {
   }
 };
 
+
+export const { setRepos, selectedRepoList } = reposSlice.actions;
 export default reposSlice.reducer;

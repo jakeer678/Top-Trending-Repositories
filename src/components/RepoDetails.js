@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import "./RepoDetail.css";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const RepoDetails = () => {
   const repos = useSelector((state) => state.repos.selecteRepo);
   const navigate = useNavigate();
+
   console.log(repos, "jakeeeeeeer");
   const handleNavgate = () => {
     navigate("/repos");

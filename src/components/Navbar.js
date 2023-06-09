@@ -1,39 +1,40 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "./Navbar.css";
-const Navbar = () => {
-  const isLogin = localStorage.getItem("idToken");
-  const navigate = useNavigate();
+import { useAuth } from "../hooks/useAuth";
+import { useLogout } from "../hooks/useLogout";
+import './Navbar.css'
 
-  const logout = () => {
-    localStorage.clear();
+
+const Navbar = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const { logout } = useLogout();
+
+  const handleLogout = async () => {
+    await logout();
     navigate("/login");
   };
 
   return (
     <nav className="navbar">
-      {console.log(isLogin, "oooooooooo")}
       <ul className="nav-menu">
         <li className="nav-item">
           <NavLink to="/">Home</NavLink>
         </li>
 
-        {isLogin && (
+        {user && (
           <li className="nav-item">
             <NavLink to="/repos">RepoList</NavLink>
           </li>
         )}
-        {isLogin && (
-          <li className="nav-item">
-            <NavLink to="/repos/:name">RepoDetails</NavLink>
-          </li>
-        )}
-        {isLogin && (
-          <li className="nav-item" onClick={logout}>
+
+        {user && (
+          <li className="nav-item" onClick={handleLogout}>
             <NavLink>Logout</NavLink>
           </li>
         )}
-        {!isLogin && (
+
+        {!user && (
           <li className="nav-item">
             <NavLink to="/login">Login</NavLink>
           </li>
