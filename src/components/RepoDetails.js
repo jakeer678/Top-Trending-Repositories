@@ -1,47 +1,60 @@
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  fetchRepoDetails,
+  setSelectedRepo,
+} from "../features/repos/reposSlice";
 import "./RepoDetail.css";
-import { useNavigate } from "react-router-dom";
 
 const RepoDetails = () => {
-  const repos = useSelector((state) => state.repos.selecteRepo);
+  const { repoId } = useParams();
+  const dispatch = useDispatch();
+  const repo = useSelector((state) => state.repos.selectedRepo);
   const navigate = useNavigate();
 
-  console.log(repos, "jakeeeeeeer");
-  const handleNavgate = () => {
+  useEffect(() => {
+    dispatch(fetchRepoDetails(repoId));
+  }, [dispatch, repoId]);
+
+  const handleNavigate = () => {
+    dispatch(setSelectedRepo(null));
     navigate("/repos");
   };
 
+  if (!repo) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <>
-      <div className="repolist">
-        <h3>Repo Details</h3>
-        <table class="table table-bordered table-dark">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Languages</th>
-              <th scope="col">Stars</th>
-              <th scope="col">Forks</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{repos?.name}</td>
-              <td>{repos?.language}</td>
-              <td>{repos?.stargazers_count}</td>
-              <td> {repos?.forks_count}</td>
-            </tr>
-          </tbody>
-        </table>
-        <button
-          type="button"
-          onClick={handleNavgate}
-          className="btn btn-primary"
-        >
-          Back to list
-        </button>
-      </div>
-    </>
+    <div className="repolist">
+      <h3>Repo Details</h3>
+      <table className="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Language</th>
+            <th>Stars</th>
+            <th>Forks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{repo.name}</td>
+            <td>{repo.language}</td>
+            <td>{repo.stargazers_count}</td>
+            <td>{repo.forks_count}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button
+        type="button"
+        onClick={handleNavigate}
+        className="btn btn-primary"
+      >
+        Back to list
+      </button>
+    </div>
   );
 };
 

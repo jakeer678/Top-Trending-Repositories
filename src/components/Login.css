@@ -34,7 +34,10 @@
   margin-top: 7rem;
 
 }
-
+.btn .btn-primary {
+  color: white;
+  text-align: center;
+}
 .container h1 {
   color:aliceblue
 }

@@ -1,13 +1,13 @@
 import React from "react";
 import { useLogin } from "../hooks/useLogin";
-import { useAuth } from "../hooks/useAuth";
+
 import { Navigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
   const { login, isPending } = useLogin();
-  const { user } = useAuth();
-
+  const user = localStorage.getItem("idToken")
+  
   if (user) {
     return <Navigate to="/repos" />;
   }

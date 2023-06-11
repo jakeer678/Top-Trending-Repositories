@@ -1,17 +1,16 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
-import { useLogout } from "../hooks/useLogout";
-import './Navbar.css'
 
+import { useLogout } from "../hooks/useLogout";
+import "./Navbar.css";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const user = localStorage.getItem("idToken");
   const navigate = useNavigate();
-  const { logout } = useLogout();
+  console.log(user, "user");
 
   const handleLogout = async () => {
-    await logout();
+    localStorage.removeItem("idToken");
     navigate("/login");
   };
 

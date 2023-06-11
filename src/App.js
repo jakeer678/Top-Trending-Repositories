@@ -6,7 +6,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import RepoList from "./components/RepoList";
-import './App.css'
+import "./App.css";
 import RepoDetails from "./components/RepoDetails";
 
 const App = () => {
@@ -18,7 +18,6 @@ const App = () => {
         <Route path="/repos" element={<RepoList />} />
         <Route path="/repos/:name" element={<RepoDetails />} />
         <Route path="/login" element={<Login />} />
-
       </Routes>
     </BrowserRouter>
   );
