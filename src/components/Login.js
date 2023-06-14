@@ -6,8 +6,8 @@ import "./Login.css";
 
 const Login = () => {
   const { login, isPending } = useLogin();
-  const user = localStorage.getItem("idToken")
-  
+  const user = localStorage.getItem("idToken");
+
   if (user) {
     return <Navigate to="/repos" />;
   }

@@ -1,7 +1,5 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-
-import { useLogout } from "../hooks/useLogout";
 import "./Navbar.css";
 
 const Navbar = () => {
