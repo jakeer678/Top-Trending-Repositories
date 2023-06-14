@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import RepoList from "./components/RepoList";
 import "./App.css";
 import RepoDetails from "./components/RepoDetails";
+import PageNotFound from "./components/PageNotFound";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/repos" element={<RepoList />} />
         <Route path="/repos/:name" element={<RepoDetails />} />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );
